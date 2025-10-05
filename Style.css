@@ -1,0 +1,293 @@
+/* ====== الصفحة ====== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  /* تدرج بنفسجي أغمق مع لمسة هادئة */
+background: linear-gradient(to bottom, #6a1b9a, #7e3bb0, #8f5cc0, #a27ad0, #b597df);
+  color: #f0f0f0;
+  min-height: 300vh;
+}
+
+
+/* ===== Header ===== */
+header {
+  width: 100%;
+  background-color: rgba(255,255,255,0.1); /* شفاف ليظهر خلفية الصفحة */
+  padding: 10px 20px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(8px); /* تأثير زجاجي خفيف */
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.name {
+  margin-left: 12px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+}
+.avatar {
+  width: 50px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.home-avatar {
+  height: 200px;
+  border-radius: 15px;
+  object-fit: cover;
+  animation: float 3s ease-in-out infinite;
+  margin: 0;
+}
+
+.nav-links {
+  margin-top: 5px;
+}
+
+.nav-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #f0e6ff;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+/* ===== Section Titles with "|" ===== */
+#about .section-title::before,
+#projects .section-title::before,
+#volunteer .section-title::before {
+  content: "| ";
+  color:#a131f1;
+  font-weight: bold;
+}
+
+/* ===== Home ===== */
+#home {
+  padding-top: 135px;
+  min-height: calc(100vh - 150px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#home .section-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  text-align: left;
+}
+
+.home-avatar {
+  height: 200px;
+  border-radius: 15px;
+  object-fit: cover;
+  animation: float 3s ease-in-out infinite;
+  margin: 0;
+}
+
+#home .text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#home h2 {
+  color: #ffffff;
+  font-size: 36px;
+  margin: 0 0 10px 0;
+  text-shadow: none;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#home p {
+  font-size: 16px;
+  color: #eddbed;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ===== Sections ===== */
+section {
+  padding: 40px 20px 60px 20px;
+  margin-top: 0;
+  background-color: transparent;
+  text-align: center;
+  border-radius: 0;
+}
+
+section h2,
+section p {
+  text-align: left;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.section-title {
+  font-family: 'Lucida Sans', sans-serif;
+  font-weight: bolder;
+  text-align: left;
+  margin-left: 20px;
+  color: #ffb7ff;
+}
+
+#about p {
+  color: #eddbed;
+}
+
+/* ===== Fade-in ===== */
+.section-content {
+  max-width: 900px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.section-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Projects / Volunteer Cards ===== */
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.project-card {
+  background-color: rgba(123, 31, 162, 0.85);
+  border-radius: 12px;
+  width: 95%;
+  max-width: 1200px;
+  text-align: center;
+  padding: 20px;
+  color: #f8f8f8;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.project-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 15px;
+}
+
+.project-card h3 {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #ffd1ff;
+}
+
+.show-desc-btn {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: rgba(142, 36, 170, 0.85);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.show-desc-btn:hover {
+  background-color: rgba(90, 0, 130, 0.85);
+}
+
+.project-desc {
+  margin-top: 10px;
+  text-align: left;
+  display: none;
+  color: #e0c3fc;
+}
+
+/* ===== Contact Section ===== */
+#contact {
+  border-top: 2px solid #a084a7; /* خط قبل الكونتاكت */
+  padding: 40px 20px 60px 20px;
+  text-align: center;
+  background-color: transparent;
+}
+
+#contact h4 {
+  margin-bottom: 20px;
+  font-size: 17px;
+  color: #ffffff;
+}
+
+#contact .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+#contact .social-icon {
+  font-size: 25px; /* حجم الأيقونة */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+#contact .social-icon:hover {
+  transform: scale(1.2); /* تكبير عند المرور */
+}
+
+/* ألوان حسب الموقع */
+#contact .linkedin {
+  color: #0077b5;
+}
+
+#contact .github {
+  color: #181717;
+}
+
+#contact .email {
+  color: #dd4b39;
+}
+
+
+/* ===== CV page ===== */
+.cv-image {
+  display: block;
+  max-width: 70%;
+  height: auto;
+  margin: 20px auto;
+  border: 2px solid #ffd1ff;
+}
+
+/* ===== Animations ===== */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}

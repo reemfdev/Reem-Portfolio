@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <img src="memoji.webp" class="avatar">
+    <span class="name">Reem Alharthi</span>
+  </div>
+  <div class="nav-links">
+    <a href="#home">Home</a>| 
+<a href="CV.pdf" target="_blank">CV</a>|
+    <a href="#projects">Projects</a>| 
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<section id="home">
+  <div class="section-content">
+    <img src="My photo.webp" class="home-avatar">
+
+    <div class="text-content">
+      <h2>I'M Reem Alharthi</h2>
+      <p>
+        Computer Science Student | Interested in Web Development and passionate
+        <br>about learning and growing in the field of Computing
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-content">
+<h2 class="section-title">About Me</h2>
+    <p>
+      Third-year Computer Science student at Umm Al-Qura University. Passionate about web development and continuously striving to enhance my technical skills through hands-on projects and self-learning. Proficient in the fundamentals of HTML, CSS, and JavaScript, and currently expanding my knowledge in modern frameworks like React and Node.js. My passion lies in building interactive web applications and innovative digital solutions. Feel free to explore my educational journey and projects on my website.
+    </p>
+  </div>
+</section>
+
+<section id="volunteer">
+  <div class="section-content">
+    <h2 class="section-title">Volunteer Work</h2>
+    <div class="projects-container">
+      
+      <div class="project-card">
+        <h3>Keptar Community - Public Relation & Project Management</h3>
+        <button class="show-desc-btn">Show More</button>
+        <p class="project-desc">
+          •Supported PR efforts by engaging with partner organizations and enhancing collaborations 
+          <br>• Contributed to technical training and helped in planning and managing internal projects
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-content">
+<h2 class="section-title">Projects</h2>
+    <div class="projects-container">
+      <div class="project-card">
+        <h3>Interactive Game Development Using Computer Vision</h3>
+        <button class="show-desc-btn">Show Description</button>
+        <p class="project-desc">
+          Developed a Subway Surfers-inspired game where the character is controlled based on the player’s real-time body movements captured through the device’s camera. The project leveraged computer vision techniques to track motion and convert it into in-game controls.<br>
+          <strong>Technologies:</strong> Python, OpenCV, PyAutoGUI, MediaPipe
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3>SDAIA Database Design Project</h3>
+        <button class="show-desc-btn">Show Description</button>
+        <p class="project-desc">
+          Created a relational database model for managing SDAIA’s internal structure, including departments, employees, projects, and task assignments. Focused on efficient design of relationships and integrity constraints using RDBMS principles.<br>
+          <strong>Core Concepts:</strong> ER modeling, relational design, normalization, SQL (logical schema)
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3>Tech Way – Front-End Project</h3>
+        <button class="show-desc-btn">Show Description</button>
+        <p class="project-desc">
+          Developed a web-based platform using HTML, CSS, and JavaScript to guide beginners in exploring tech career paths. Built interactive features including a landing page, career quiz, and learning roadmaps for fields like Web Development, Cybersecurity, AI, and more. Collaborated with a teammate to strengthen front-end development skills and create a beginner-friendly resource.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-content">
+    <h4>Contact Me</h4>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/reemfalharthi" target="_blank" class="social-icon">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/reemfdev" target="_blank" class="social-icon">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:reem.falharhii@email.com" class="social-icon">
+                <i class="fas fa-envelope"></i></a>
+
+<script>
+  // ===== Show/Hide Project Description =====
+  const buttons = document.querySelectorAll('.show-desc-btn');
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const desc = button.nextElementSibling;
+      if(desc.style.display === 'block') {
+        desc.style.display = 'none';
+        button.textContent = 'Show Description';
+      } else {
+        desc.style.display = 'block';
+        button.textContent = 'Hide Description';
+      }
+    });
+  });
+
+  // ===== Scroll to Section + shadow effect =====
+  const links = document.querySelectorAll(".nav-links a");
+
+  links.forEach(link => {
+    link.addEventListener("click", function(e) {
+      const href = this.getAttribute("href");
+
+      // فقط لو الرابط داخلي (#)
+      if (href.startsWith("#")) {
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetSection = document.getElementById(targetId);
+
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: "smooth" });
+
+          // إضافة ظل مؤقت
+          targetSection.classList.add("clicked");
+          setTimeout(() => {
+            targetSection.classList.remove("clicked");
+          }, 500);
+        }
+      }
+      // لو الرابط خارجي (مثلاً CV.pdf) يفتح عادي
+    });
+  });
+
+  // ===== Fade-in عند النزول لكل السكشنات =====
+  const faders = document.querySelectorAll(".section-content");
+
+  const appearOptions = {
+    threshold: 0.1
+  };
+
+  const appearOnScroll = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+      } else {
+        // إزالة الكلاس لما يخرج السكشن من الشاشة
+        entry.target.classList.remove("visible");
+      }
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+
+</script>
+
+</body>
+</html>
